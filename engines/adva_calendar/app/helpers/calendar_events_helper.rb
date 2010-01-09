@@ -1,7 +1,7 @@
 module CalendarEventsHelper
   def collection_title(category=nil, tags=nil)
     title = []
-    title << current_timespan.first.strftime(current_timespan_format||t(:'adva.calendar.titles.formats.year_month')) if current_timespan.first.present?
+    title << I18n.l(current_timespan.first, :format => (current_timespan_format||t(:'adva.calendar.titles.formats.year_month')) ) if current_timespan.first.present?
     title << t(:'adva.calendar.titles.in_category', :title => category.title) if category
     title << t(:'adva.calendar.titles.tagged', :tags => tags.to_sentence) if tags
     t(:'adva.calendar.titles.events') + ' ' + title.join(', ') if title.present?
