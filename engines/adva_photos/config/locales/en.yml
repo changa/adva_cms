@@ -110,3 +110,6 @@ en:
             success: The set was removed successfully.
       params:
         author: Author and current_user not set.
+      titles:
+        default: All photos
+        photos_xxx: "Photos {{photos_list}"

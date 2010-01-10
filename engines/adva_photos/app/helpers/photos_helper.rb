@@ -3,7 +3,7 @@ module PhotosHelper
     title = []
     title << 'about '  + set.title if set
     title << 'tagged ' + tags.to_sentence if tags
-    title.present? ? 'Photos ' + title.join(', ') : 'All photos'
+    title.present? ? t('adva.photos.titles.photos_xxx', :photos_list => title.join(', ') ) : t('adva.photos.titles.default')
   end
 
   def link_to_set(*args)
