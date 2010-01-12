@@ -84,12 +84,16 @@ class BaseController < ApplicationController
     end
 
     def page_cache_directory
-      RAILS_ROOT + if Rails.env == 'test'
-         Site.multi_sites_enabled ? '/tmp/cache/' + perma_host : '/tmp/cache'
+       if Rails.env == 'test'
+         RAILS_ROOT + (Site.multi_sites_enabled ? '/tmp/cache/' + perma_host : '/tmp/cache')
        else
          # FIXME change this to
          # Site.multi_sites_enabled ? '/public/sites/' + perma_host : '/cache' ?
-         Site.multi_sites_enabled ? '/public/cache/' + perma_host : '/public'
+         if Site.multi_sites_enabled
+           RAILS_ROOT + '/public/cache/' + perma_host
+         else
+           ActionController::Base.page_cache_directory
+          end
        end
     end
     
