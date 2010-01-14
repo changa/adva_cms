@@ -1,8 +1,8 @@
 module PhotosHelper
   def collection_title(set=nil, tags=nil)
     title = []
-    title << 'about '  + set.title if set
-    title << 'tagged ' + tags.to_sentence if tags
+    title << t('adva.photos.titles.about', :title => set.title) if set
+    title << t('adva.photos.titles.tagged', :tags => tags.to_sentence) if tags
     title.present? ? t('adva.photos.titles.photos_xxx', :photos_list => title.join(', ') ) : t('adva.photos.titles.default')
   end
 
